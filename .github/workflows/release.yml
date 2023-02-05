@@ -12,6 +12,10 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@v3
+    - uses: johnyherangi/create-release-notes@main
+        id: create-release-notes
     - uses: ncipollo/release-action@v1
       with:
         generateReleaseNotes: true
+        body: ${{ steps.create-release-notes.outputs.release-notes }}
+
