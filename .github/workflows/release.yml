@@ -1,0 +1,17 @@
+name: Releases
+
+on: 
+  push:
+    tags:
+    - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout
+    - uses: ncipollo/release-action
+      with:
+        generateReleaseNotes: true
